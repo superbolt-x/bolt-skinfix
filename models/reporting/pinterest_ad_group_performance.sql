@@ -16,7 +16,7 @@ date,
 date_granularity,
 spend,
 impression_1+impression_2 as impressions,
-clickthrough_1+clickthrough_2 as clicks,
+clickthrough_1 as clicks,
 total_view_add_to_cart+total_click_add_to_cart as add_to_cart,
 total_checkout as purchases,
 total_checkout_value as revenue
