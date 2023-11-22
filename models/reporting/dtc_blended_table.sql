@@ -8,7 +8,7 @@
         COALESCE(SUM(impressions),0) AS impressions, COALESCE(SUM(link_clicks),0) AS clicks, COALESCE(SUM(purchases),0) AS paid_purchases, 
         COALESCE(SUM(revenue),0) AS paid_revenue, 0 as shopify_purchases, 0 as shopify_revenue, 0 as shopify_first_purchases, 0 as shopify_first_revenue,
         0 as shopify_repeat_revenue, 0 as shopify_repeat_purchases
-    FROM {{ ref('facebook_ad_performance') }}
+    FROM {{ source('reporting','facebook_ad_performance') }}
     WHERE account_id = '152712828589300'
     AND campaign_type_custom = 'DTC'
     GROUP BY channel, date, date_granularity, market, campaign_name, ad_approach)
@@ -19,7 +19,7 @@
         COALESCE(SUM(spend),0) AS spend, 0 as first_spend, 0 as repeat_spend, COALESCE(SUM(impressions),0) AS impressions, COALESCE(SUM(clicks),0) AS clicks,
         COALESCE(SUM(purchases),0) AS paid_purchases, COALESCE(SUM(revenue),0) AS paid_revenue, 0 as shopify_purchases, 0 as shopify_revenue, 0 as shopify_first_purchases, 
         0 as shopify_first_revenue, 0 as shopify_repeat_revenue, 0 as shopify_repeat_purchases
-    FROM {{ ref('tiktok_ad_performance') }}
+    FROM {{ source('reporting','tiktok_ad_performance') }}
     WHERE campaign_type_custom = 'DTC'
     GROUP BY channel, date, date_granularity, market, campaign_name, ad_approach)
     
@@ -29,7 +29,7 @@
         COALESCE(SUM(spend),0) AS spend, 0 as first_spend, 0 as repeat_spend, COALESCE(SUM(impressions),0) AS impressions, COALESCE(SUM(clicks),0) AS clicks,
         COALESCE(SUM(purchases),0) AS paid_purchases, COALESCE(SUM(revenue),0) AS paid_revenue, 0 as shopify_purchases, 0 as shopify_revenue, 0 as shopify_first_purchases, 
         0 as shopify_first_revenue, 0 as shopify_repeat_revenue, 0 as shopify_repeat_purchases
-    FROM {{ ref('googleads_campaign_performance') }}
+    FROM {{ source('reporting','googleads_campaign_performance') }}
     WHERE campaign_name !~* 'youtube'
     GROUP BY channel, date, date_granularity, market, campaign_name, ad_approach)
     
@@ -39,7 +39,7 @@
         COALESCE(SUM(spend),0) AS spend, 0 as first_spend, 0 as repeat_spend, COALESCE(SUM(impressions),0) AS impressions, COALESCE(SUM(clicks),0) AS clicks,
         COALESCE(SUM(purchases),0) AS paid_purchases, COALESCE(SUM(revenue),0) AS paid_revenue, 0 as shopify_purchases, 0 as shopify_revenue, 0 as shopify_first_purchases, 
         0 as shopify_first_revenue, 0 as shopify_repeat_revenue, 0 as shopify_repeat_purchases
-    FROM {{ ref('googleads_campaign_performance') }}
+    FROM {{ source('reporting','googleads_campaign_performance') }}
     WHERE campaign_name ~* 'youtube'
     GROUP BY channel, date, date_granularity, market, campaign_name, ad_approach)
     
@@ -50,7 +50,7 @@
         COALESCE(SUM(gross_sales),0) as shopify_revenue, COALESCE(SUM(first_orders),0) as shopify_first_purchases, 
         COALESCE(SUM(first_order_gross_sales),0) as shopify_first_revenue, COALESCE(SUM(repeat_orders),0) as shopify_repeat_purchases, 
         COALESCE(SUM(repeat_order_gross_sales),0) as shopify_repeat_revenue
-    FROM {{ ref('shopify_us_sales') }}
+    FROM {{ source('reporting','shopify_us_sales') }}
     GROUP BY date, date_granularity, market, channel, campaign_name, ad_approach
     UNION ALL
     SELECT 'Shopify' as channel, date, date_granularity, 'CA' as market, NULL as campaign_name, NULL as ad_approach,
@@ -58,5 +58,5 @@
         COALESCE(SUM(gross_sales),0) as shopify_revenue, COALESCE(SUM(first_orders),0) as shopify_first_purchases, 
         COALESCE(SUM(first_order_gross_sales),0) as shopify_first_revenue, COALESCE(SUM(repeat_orders),0) as shopify_repeat_purchases, 
         COALESCE(SUM(repeat_order_gross_sales),0) as shopify_repeat_revenue
-    FROM {{ ref('shopify_ca_sales') }}
+    FROM {{ source('reporting','shopify_ca_sales') }}
     GROUP BY date, date_granularity, market, channel, campaign_name, ad_approach)
