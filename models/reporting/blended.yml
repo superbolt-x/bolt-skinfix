@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: reporting
+    schema: reporting
+    tables:
+      - name: facebook_ad_performance
+        identifier: skinfix_facebook_ad_performance
+
+      - name: googleads_campaign_performance
+        identifier: skinfix_googleads_campaign_performance
+
+      - name: tiktok_ad_performance
+        identifier: skinfix_tiktok_ad_performance
+
+      - name: shopify_us_sales
+        identifier: heyday_shopify_us_sales
+        
+      - name: shopify_ca_sales
+        identifier: heyday_shopify_ca_sales
