@@ -14,7 +14,7 @@ sources:
         identifier: skinfix_tiktok_ad_performance
 
       - name: shopify_us_sales
-        identifier: heyday_shopify_us_sales
+        identifier: skinfix_shopify_us_sales
         
       - name: shopify_ca_sales
-        identifier: heyday_shopify_ca_sales
+        identifier: skinfix_shopify_ca_sales
