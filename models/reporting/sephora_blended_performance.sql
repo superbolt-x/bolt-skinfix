@@ -1,5 +1,5 @@
 {{ config (
-    alias = target.database + '_sephora_blended_table'
+    alias = target.database + '_sephora_blended_performance'
 )}}
 
   (SELECT 'Facebook' as channel, date, date_granularity, market, product_name,
