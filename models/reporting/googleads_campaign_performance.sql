@@ -8,6 +8,10 @@ campaign_name,
 campaign_id,
 campaign_status,
 campaign_type_default,
+CASE 
+    WHEN campaign_name ~* 'sephora' THEN 'Sephora'
+    WHEN campaign_name !~* 'sephora' THEN 'DTC'
+END AS campaign_type_custom,
 CASE WHEN account_id = '7985220394' THEN 'US'
     WHEN account_id = '4973168899' THEN 'CA'
 END AS market,
