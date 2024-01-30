@@ -10,6 +10,9 @@ sources:
       - name: googleads_campaign_performance
         identifier: skinfix_googleads_campaign_performance
 
+      - name: googleads_ad_performance
+        identifier: skinfix_googleads_ad_performance
+
       - name: tiktok_ad_performance
         identifier: skinfix_tiktok_ad_performance
 
