@@ -23,13 +23,13 @@ CASE WHEN account_id = '7985220394' THEN 'US'
 END AS market,
 date,
 date_granularity,
-CASE WHEN account_id = '4973168899' THEN spend*0.76
+CASE WHEN account_id = '4973168899' THEN spend*0.73
     ELSE spend
 END as spend,
 impressions,
 clicks,
 conversions as purchases,
-CASE WHEN account_id = '4973168899' THEN conversions_value*0.76
+CASE WHEN account_id = '4973168899' THEN conversions_value*0.73
     ELSE conversions_value
 END as revenue
 FROM {{ ref('googleads_performance_by_ad') }}
