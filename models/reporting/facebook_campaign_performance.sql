@@ -9,9 +9,6 @@ CASE
     WHEN campaign_name ~* 'ca' THEN 'CA'
     WHEN campaign_name !~* 'ca' THEN 'US'
 END AS market,
-SPLIT_PART(ad_name, ' - ', 4) AS product_focus,
-SPLIT_PART(ad_name, ' - ', 3) AS product_type,
-SPLIT_PART(ad_name, ' -', 5) AS product_name,
 campaign_id,
 campaign_effective_status,
 CASE WHEN campaign_name ~* 'prospecting' THEN 'Campaign Type: Prospecting'
